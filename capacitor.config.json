@@ -1,0 +1,8 @@
+{
+  "appId": "app.kaikata",
+  "appName": "Kaikata",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#14120f"
+  }
+}

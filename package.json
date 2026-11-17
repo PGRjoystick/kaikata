@@ -1,0 +1,31 @@
+{
+  "name": "kaikata",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview --host",
+    "data": "node scripts/build-data.mjs",
+    "test": "node --experimental-strip-types scripts/test-grade.ts",
+    "android": "bash scripts/apk.sh"
+  },
+  "dependencies": {
+    "@capacitor-community/text-to-speech": "^8.0.2",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/core": "^8.6.2",
+    "curve-matcher": "^1.1.1",
+    "ts-fsrs": "^5.4.2",
+    "vue": "^3.5.45",
+    "vue-router": "^5.5.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.2",
+    "@vitejs/plugin-vue": "^6.0.11",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "vite-plugin-pwa": "^2.0.0",
+    "vue-tsc": "^3.3.14"
+  }
+}
