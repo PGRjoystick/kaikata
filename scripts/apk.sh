@@ -13,7 +13,8 @@ APK=android/app/build/outputs/apk/debug/app-debug.apk
 echo "APK: $PWD/$APK"
 
 if "$ADB" get-state >/dev/null 2>&1; then
-  "$ADB" install -r "$APK"
+  # Without --user, Android installs into every profile adb can reach (work profile, Dual Messenger...).
+  "$ADB" install -r --user 0 "$APK"
   "$ADB" shell am start -n app.kaikata/.MainActivity >/dev/null
   echo "Installed and opened on $("$ADB" get-serialno)"
 else
