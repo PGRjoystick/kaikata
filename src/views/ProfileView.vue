@@ -5,6 +5,7 @@ import { speak } from '../lib/fx'
 import { locale, t } from '../lib/i18n'
 import { exportData, importData, resetAll, state, stats, week } from '../lib/store'
 
+const version = __APP_VERSION__
 const peak = computed(() => Math.max(1, ...week.value.map((d) => d.n)))
 const weekTotal = computed(() => week.value.reduce((n, d) => n + d.n, 0))
 const weekday = (ms: number) => new Intl.DateTimeFormat(locale.value, { weekday: 'short' }).format(ms)
@@ -103,6 +104,25 @@ function reset() {
     </div>
 
     <h3 class="section">{{ t('profile.about') }}</h3>
-    <p class="muted small credits">Kaikata 0.1 · {{ t('profile.credits') }}</p>
+    <div class="card stack legal">
+      <p class="small">Kaikata {{ version }}</p>
+      <p class="muted small">
+        {{ t('profile.creditStrokes') }}
+        <a href="https://kanjivg.tagaini.net" target="_blank" rel="noopener">KanjiVG</a> © Ulrich Apel,
+        <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>.
+        {{ t('profile.creditKanji') }}
+        <a href="https://www.edrdg.org/wiki/index.php/KANJIDIC_Project" target="_blank" rel="noopener">KANJIDIC2</a>,
+        {{ t('profile.creditEdrdg') }}
+        <a href="https://www.edrdg.org/" target="_blank" rel="noopener">Electronic Dictionary Research and Development Group</a>,
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.
+        {{ t('profile.creditModified') }}
+      </p>
+      <RouterLink class="btn quiet" to="/licenses">{{ t('licenses.title') }}</RouterLink>
+    </div>
   </main>
 </template>
+
+<style scoped>
+.legal p { line-height: 1.55; overflow-wrap: anywhere; }
+.legal p a { color: var(--indigo); text-decoration: underline; text-underline-offset: 2px; }
+</style>

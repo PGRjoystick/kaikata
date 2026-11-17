@@ -1,11 +1,15 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
+import { thirdPartyNotices } from './scripts/notices-plugin.ts'
+import pkg from './package.json' with { type: 'json' }
 
 export default defineConfig({
   base: './',
+  define: { __APP_VERSION__: JSON.stringify(pkg.version) },
   plugins: [
     vue(),
+    thirdPartyNotices(import.meta.dirname),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg'],

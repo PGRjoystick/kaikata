@@ -46,10 +46,19 @@ Kana rows and words live in `src/lib/content.ts`. Any kana already has stroke da
 from `scripts/build-data.mjs` (currently the old JLPT level 4 set); widen the filter there and
 run `npm run data`.
 
-## Data credits
+## Licenses
 
-- Stroke order: [KanjiVG](https://kanjivg.tagaini.net) © Ulrich Apel, CC BY-SA 3.0.
-- Kanji readings and meanings: [KANJIDIC2](https://www.edrdg.org/wiki/index.php/KANJIDIC_Project)
-  © Electronic Dictionary Research and Development Group, CC BY-SA 4.0.
+**Data.** The app bundles two adapted open datasets. They are shared under their original licenses; see
+[`src/data/LICENSE.md`](src/data/LICENSE.md) for the full attribution and a list of the changes made.
 
-The generated files in `src/data/` are derived from these and carry the same licenses.
+- Stroke order: [KanjiVG](https://kanjivg.tagaini.net) © Ulrich Apel,
+  [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+- Kanji readings and meanings: [KANJIDIC2](https://www.edrdg.org/wiki/index.php/KANJIDIC_Project), the property of
+  the [Electronic Dictionary Research and Development Group](https://www.edrdg.org/), used in conformance with the
+  Group's [licence](https://www.edrdg.org/edrdg/licence.html),
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+**Third-party code.** `npm run build` writes `third-party-notices.json` with the license text of every npm package in
+the bundle (`scripts/notices-plugin.ts`). The Android libraries in the APK are listed in
+`src/data/android-libraries.json`; regenerate it with `node scripts/android-libraries.mjs` after changing Android
+dependencies. The app shows both lists under Profile → Licenses.
